@@ -1,7 +1,9 @@
 {% if cart.item_count > 0 %}
   <h1>cart</h1>
+  <h1 class="text-2xl font-bold mb-4">Cart</h1>
   <form action="/cart" method="post" novalidate>
     <table>
+    <table class="w-full mb-4">
       <thead>
         <th colspan="2">Prod</th>
         <th>Price</th>
@@ -38,6 +40,16 @@
       <p>sub total : {{ cart.total_price | money }}</p>
       <button type="submit" name="update">Update</button>
       <button type="submit" name="checkout">Checkout</button>
+    <div class="space-x-2 mt-4">
+      <p class="mb-2 font-semibold">Sub total : {{ cart.total_price | money }}</p>
+      <button type="submit" name="update" class="btn flex items-center">
+        {% render 'ic-success' %}
+        <span class="ml-1">Update</span>
+      </button>
+      <button type="submit" name="checkout" class="btn flex items-center">
+        {% render 'ic-shopping-bag' %}
+        <span class="ml-1">Checkout</span>
+      </button>
     </div>
   </form>
 {% else %}
